@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: web_res_manager_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: web_res_manager
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - web_res_network
+    command: --default-authentication-plugin=mysql_native_password
+
+  # Backend API Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: web_res_manager_server
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=web_res_manager
+      - DB_USER=root
+      - DB_PASSWORD=password
+    depends_on:
+      - db
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    networks:
+      - web_res_network
+
+  # Frontend React App
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: web_res_manager_client
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    networks:
+      - web_res_network
+
+  # phpMyAdmin (Optional - for database management)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: web_res_manager_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    depends_on:
+      - db
+    networks:
+      - web_res_network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  web_res_network:
+    driver: bridge
