@@ -1,0 +1,230 @@
+/* =============================================
+   Web Reservation Manager - Global Styles
+   ============================================= */
+
+/* リセットとベース設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Bootstrap override */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* カスタムクラス */
+.shadow-sm-custom {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.shadow-custom {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* ログイン画面用 */
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: none;
+}
+
+/* サイドバー */
+.sidebar {
+  background: #2c3e50;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+.sidebar .nav-link {
+  color: #ecf0f1;
+  padding: 1rem 1.5rem;
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #34495e;
+  color: white;
+}
+
+.sidebar .nav-link.active {
+  background-color: #3498db;
+  color: white;
+}
+
+/* メインコンテンツ */
+.main-content {
+  background-color: #ecf0f1;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* カード */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* テーブル */
+.table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* 予約ステータス */
+.booking-slot {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.booking-slot:hover {
+  background-color: #bbdefb;
+  transform: scale(1.05);
+}
+
+/* エラーログ */
+.error-item {
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.error-resolved {
+  background-color: #e8f5e8;
+  border-left-color: #4caf50;
+}
+
+/* 設定画面 */
+.settings-section {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.settings-section h5 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+/* ユーティリティ */
+.text-primary-custom {
+  color: #3498db !important;
+}
+
+.text-success-custom {
+  color: #27ae60 !important;
+}
+
+.text-danger-custom {
+  color: #e74c3c !important;
+}
+
+.text-warning-custom {
+  color: #f39c12 !important;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 1000;
+    width: 250px;
+  }
+  
+  .sidebar.show {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

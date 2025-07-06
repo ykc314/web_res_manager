@@ -17,7 +17,14 @@
     "test": "cd server && npm test",
     "start": "cd server && npm start"
   },
-  "keywords": ["booking", "management", "scraping", "nodejs", "react", "mysql"],
+  "keywords": [
+    "booking",
+    "management",
+    "scraping",
+    "nodejs",
+    "react",
+    "mysql"
+  ],
   "author": "ykc314",
   "license": "MIT",
   "devDependencies": {
