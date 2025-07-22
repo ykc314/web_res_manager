@@ -1,10 +1,10 @@
 # Web Reservation Manager
 
-風俗店ポータルサイトの予約一元管理システム
+ポータルサイトの予約一元管理システム
 
 ## 概要
 
-複数の風俗店ポータルサイトの予約情報を一元管理し、効率的な予約管理を実現するWebアプリケーションです。
+複数のポータルサイトの予約情報を一元管理し、効率的な予約管理を実現するWebアプリケーションです。
 
 ## 主な機能
 
@@ -77,8 +77,8 @@ npm run dev
 ## デフォルトログイン情報
 
 ```
-ユーザー名: admin
-パスワード: admin123
+ユーザー名: ${ADMIN_USERNAME}
+パスワード: ${ADMIN_PASSWORD}
 ```
 
 ## スクリプト一覧
@@ -173,12 +173,12 @@ npm run build
 
 ### バックアップ
 ```bash
-docker exec web_res_manager_db mysqldump -u root -ppassword web_res_manager > backup.sql
+docker exec web_res_manager_db mysqldump -u root -p${DB_PASSWORD} ${DB_NAME} > backup.sql
 ```
 
 ### リストア
 ```bash
-docker exec -i web_res_manager_db mysql -u root -ppassword web_res_manager < backup.sql
+docker exec -i web_res_manager_db mysql -u root -p${DB_PASSWORD} ${DB_NAME} < backup.sql
 ```
 
 ## トラブルシューティング
